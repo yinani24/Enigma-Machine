@@ -7,6 +7,9 @@
 #include "Rotor.h"
 
 struct Enigma {
+  struct Plugboard * plug;
+  char plug_switch[27];
+  struct Reflector Ref;
   /* Your implementation of Enigma */
 };
 

@@ -4,5 +4,8 @@
 #include "common.h"
 
 /* Your definition of Reflector */
+typedef struct Reflector{
+    char letters[27];
+};
 
 #endif
