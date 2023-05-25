@@ -3,15 +3,19 @@
 
 #include "common.h"
 #include <stdio.h>
-#include<stdint.h>
+#include <stdint.h>
+#include <string.h>
+#include <stdlib.h>
 // #include<stddef.h>
 
 /* Your definition of Plugboard */
 typedef struct Plugboard{
     char key;
     char value;
-};
+}Plugboard;
 
-void forming_plugboard(struct Plugboard * plug, size_t num_pairs, const char *pairs);`
+Plugboard * forming_plugboard(size_t num_pairs, const char *pairs);
+void free_plugboard(struct Plugboard * plug);
+void forming_plug_string(struct Plugboard * plug, char * plug_switch, size_t num_pairs);
 
 #endif

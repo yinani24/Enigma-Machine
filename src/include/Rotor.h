@@ -3,6 +3,7 @@
 
 #include "common.h"
 
+void do_nothing();
 /* Your definition of Rotor */
 
 #endif

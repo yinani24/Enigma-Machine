@@ -4,7 +4,7 @@
 #include "string.h"
 
 
-void reflector(Reflector Ref, const char * reflectors){
-    strcpy(Ref.letters, reflectors);
+void reflectors(struct Reflector  * Ref, const char * reflectors){
+    strcpy(Ref->letters, reflectors);
 }
 /* Your code to implement Reflector here */

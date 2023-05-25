@@ -7,10 +7,10 @@
 #include "Rotor.h"
 
 struct Enigma {
-  struct Plugboard * plug;
+  Plugboard * Plug;
   char plug_switch[27];
-  struct Reflector Ref;
+  Reflector Ref;
   /* Your implementation of Enigma */
-};
+}E;
 
 #endif
