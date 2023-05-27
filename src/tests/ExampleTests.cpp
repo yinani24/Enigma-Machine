@@ -113,8 +113,8 @@ TEST(ExampleTests, TestEnigmaOneRotorWRing) {
 //   size_t inits[] = {1, 5, 3};
 //   Enigma *enigma = new_Enigma(3, rotors, rings, inits, UKW_B, 5, "ECSONFIVTH");
 //   char encrypt[] = "\0\0\0\0";
-//   encrypt_Enigma(enigma, encrypt, "C");
-//   ASSERT_STREQ(encrypt, "N");
+//   encrypt_Enigma(enigma, encrypt, "I");
+//   ASSERT_STREQ(encrypt, "C");
 //   free_Enigma(enigma);
 // }
 
