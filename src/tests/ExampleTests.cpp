@@ -8,41 +8,41 @@ extern "C" {
 
 namespace {
 
-// TEST(ExampleTests, TestPlugboard) {
-//   Enigma *enigma = new_Enigma(0, NULL, NULL, NULL, LETTERS, 5, "ECSONFIVTH");
-//   char encrypt[64];
-//   memset(encrypt, 0, 64);
-//   encrypt_Enigma(enigma, encrypt, ECS153);
-//   EXPECT_STREQ(encrypt, ECS153);
-//   free_Enigma(enigma);
-// }
+TEST(ExampleTests, TestPlugboard) {
+  Enigma *enigma = new_Enigma(0, NULL, NULL, NULL, LETTERS, 5, "ECSONFIVTH");
+  char encrypt[64];
+  memset(encrypt, 0, 64);
+  encrypt_Enigma(enigma, encrypt, ECS153);
+  EXPECT_STREQ(encrypt, ECS153);
+  free_Enigma(enigma);
+}
 
-// TEST(ExampleTests, TestReflector_Ident) {
-//   Enigma *enigma = new_Enigma(0, NULL, NULL, NULL, LETTERS, 0, NULL);
-//   char encrypt[64];
-//   memset(encrypt, 0, 64);
-//   encrypt_Enigma(enigma, encrypt, ECS153);
-//   EXPECT_STREQ(encrypt, ECS153);
-//   free_Enigma(enigma);
-// }
+TEST(ExampleTests, TestReflector_Ident) {
+  Enigma *enigma = new_Enigma(0, NULL, NULL, NULL, LETTERS, 0, NULL);
+  char encrypt[64];
+  memset(encrypt, 0, 64);
+  encrypt_Enigma(enigma, encrypt, ECS153);
+  EXPECT_STREQ(encrypt, ECS153);
+  free_Enigma(enigma);
+}
 
-// TEST(ExampleTests, TestReflector_UKWA) {
-//   Enigma *enigma = new_Enigma(0, NULL, NULL, NULL, I_UKW_A, 0, NULL);
-//   char encrypt[64];
-//   memset(encrypt, 0, 64);
-//   encrypt_Enigma(enigma, encrypt, ECS153);
-//   EXPECT_STREQ(encrypt, "V NAEFFG FVWA AMT QRA LVIA SXNAA");
-//   free_Enigma(enigma);
-// }
+TEST(ExampleTests, TestReflector_UKWA) {
+  Enigma *enigma = new_Enigma(0, NULL, NULL, NULL, I_UKW_A, 0, NULL);
+  char encrypt[64];
+  memset(encrypt, 0, 64);
+  encrypt_Enigma(enigma, encrypt, ECS153);
+  EXPECT_STREQ(encrypt, "V NAEFFG FVWA AMT QRA LVIA SXNAA");
+  free_Enigma(enigma);
+}
 
-// TEST(ExampleTests, TestPlugboardAndReflector_UKWA) {
-//   Enigma *enigma = new_Enigma(0, NULL, NULL, NULL, I_UKW_B, 5, "ECSONFIVTH");
-//   char encrypt[64];
-//   memset(encrypt, 0, 64);
-//   encrypt_Enigma(enigma, encrypt, ECS153);
-//   EXPECT_STREQ(encrypt, "W BUYGGA GWFU UQM NOU KWPU DZBUU");
-//   free_Enigma(enigma);
-// }
+TEST(ExampleTests, TestPlugboardAndReflector_UKWA) {
+  Enigma *enigma = new_Enigma(0, NULL, NULL, NULL, I_UKW_B, 5, "ECSONFIVTH");
+  char encrypt[64];
+  memset(encrypt, 0, 64);
+  encrypt_Enigma(enigma, encrypt, ECS153);
+  EXPECT_STREQ(encrypt, "W BUYGGA GWFU UQM NOU KWPU DZBUU");
+  free_Enigma(enigma);
+}
 
 Enigma *get_default_Enigma() {
   const char *rotors[] = {ROTOR_I, ROTOR_II, ROTOR_III};
