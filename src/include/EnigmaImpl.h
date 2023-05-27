@@ -10,7 +10,11 @@ struct Enigma {
   Plugboard * Plug;
   char plug_switch[27];
   Reflector Ref;
+  Rotor * Rot;
+  size_t num_rotors;
   /* Your implementation of Enigma */
 }E;
+
+
 
 #endif
