@@ -13,22 +13,26 @@ Rotor * rotor_intialization(size_t num_rotors, const char **rotors, size_t *ring
 
         size_t len = strlen(rotors[i]) - 26 - 1;
         //DEBUGF("Len Value: %ld\n", len);
-
-        Rot[i].notch = malloc(sizeof(char) * len);
-        char temp[len];
-        
-        memcpy(temp, rotors[i] + 27, len);
-        
-        for(size_t j = 0; j < len; j++){
-            Rot[i].notch[j] = temp[j];
-            //DEBUGF("Len Value: %c\n", Rot[i].notch[j]);
-        }
-
-        if(temp[0] == '\0'){
-            Rot[i].num_notch = 0;
+        if(len != 0){
+            Rot[i].notch = malloc(sizeof(char) * len);
+            char temp[len];
+            memcpy(temp, rotors[i] + 27, len);
+            
+            for(size_t j = 0; j < len; j++){
+                Rot[i].notch[j] = temp[j];
+                //DEBUGF("Len Value: %c\n", Rot[i].notch[j]);
+            }
+            //DEBUGF("Len Value: %s\n", Rot[i].notch);
+            // if(temp[0] == '\0'){
+            //     Rot[i].num_notch = 0;
+            // }
+            // else{
+            //     Rot[i].num_notch = len;
+            //}
+            Rot[i].num_notch = len;
         }
         else{
-            Rot[i].num_notch = len;
+            Rot[i].num_notch = 0;
         }
 
     }
@@ -37,7 +41,8 @@ Rotor * rotor_intialization(size_t num_rotors, const char **rotors, size_t *ring
 
 void free_rotor(Rotor* Rot, size_t num_rotors){
     for(size_t i = 0; i < num_rotors; i++){
-        free(Rot[i].notch);
+        if(Rot[i].num_notch)    
+            free(Rot[i].notch);
     }
     free(Rot);
 }

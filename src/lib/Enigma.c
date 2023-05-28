@@ -71,13 +71,13 @@ void tick_Enigma(Enigma *self){
 
     self->Rot[0].init = (self->Rot[0].init + 1) % MAX_SIZE;
     for(size_t i = 0 ; i < self->num_rotors; i++){
-        if(shift[i]){
+        if(shift[i] && i == 0){
             self->Rot[i + 1].init = (self->Rot[i + 1].init + 1) % MAX_SIZE;
         }
-        // else if(shift[i] &&  i != 0){
-        //     self->Rot[i].init = (self->Rot[i].init + 1) % MAX_SIZE;
-        //     self->Rot[i + 1].init = (self->Rot[i + 1].init + 1) % MAX_SIZE;
-        // }
+        else if(shift[i] &&  i != 0){
+            self->Rot[i].init = (self->Rot[i].init + 1) % MAX_SIZE;
+            self->Rot[i + 1].init = (self->Rot[i + 1].init + 1) % MAX_SIZE;
+        }
     } 
 }
 
@@ -195,19 +195,24 @@ char *encrypt_Enigma(Enigma *self, char *dst, const char *src){
         //printf("Destination Var Before: %c\n", dst[i]);
         if(dst[i] != ' '){
             dst[i] = self->plug_switch[dst[i] - 'A'];
+            DEBUGF("Position PLUG %c\n", dst[i]);
             if(self->num_rotors){
                 //DEBUGF("\nPosition in Forward %ld\n\n", i+1);
                 tick_Enigma(self);
                 dst[i] = forward_check(self->Rot, self->num_rotors, dst[i]);
+                DEBUGF("Position Forward %c\n", dst[i]);
             }   
             //DEBUGF("Before Refl Char: %c\n", dst[i]);
             dst[i] = self->Ref.letters[dst[i] - 'A'];
+            DEBUGF("Position REf %c\n", dst[i]);
             //DEBUGF("After Refl Char: %c\n", dst[i]);
             if(self->num_rotors){
                 //DEBUGF("\nPosition in Backward %ld\n\n", i+1);
                 dst[i] = backward_check(self->Rot, self->num_rotors, dst[i]);
+                DEBUGF("Position BAck %c\n", dst[i]);
             }
             dst[i] = self->plug_switch[dst[i] - 'A'];
+            DEBUGF("Position Plug %c\n", dst[i]);
         }
         
         //printf("Destination Var After: %c\n", dst[i]);   

@@ -102,21 +102,38 @@ TEST(ExampleTests, TestEnigmaOneRotorWRing) {
   free_Enigma(enigma);
 }
 
-// TEST(ExampleTests, TestEnigmaOneRotorWRing) {
-//   // Plugboard: C->C
-//   // Rotor I: C->E
-//   // Reflector: E->A
-//   // Reverse Rotor I: A->V
-//   // Plugboard: V->V
-//   const char *rotors[] = {ROTOR_I, ROTOR_II, ROTOR_III};
-//   size_t rings[] = {1, 5, 3};
-//   size_t inits[] = {1, 5, 3};
-//   Enigma *enigma = new_Enigma(3, rotors, rings, inits, UKW_B, 5, "ECSONFIVTH");
-//   char encrypt[] = "\0\0\0\0";
-//   encrypt_Enigma(enigma, encrypt, "I");
-//   ASSERT_STREQ(encrypt, "C");
-//   free_Enigma(enigma);
-// }
+TEST(ExampleTests, TestEnigmaOneRotorWIfRing) {
+  // Plugboard: C->C
+  // Rotor I: C->E
+  // Reflector: E->A
+  // Reverse Rotor I: A->V
+  // Plugboard: V->V
+  const char *rotors[] = {ROTOR_I, ROTOR_II, ROTOR_III};
+  size_t rings[] = {0, 0, 0};
+  size_t inits[] = {0, 0, 0};
+  Enigma *enigma = new_Enigma(3, rotors, rings, inits, I_UKW_B, 0, NULL);
+  char encrypt[] = "\0\0\0\0";
+  encrypt_Enigma(enigma, encrypt, "Q");
+  ASSERT_STREQ(encrypt, "U");
+  free_Enigma(enigma);
+}
+
+TEST(ExampleTests, TestEnigmaOneRotorWIf2Ring) {
+  // Plugboard: C->C
+  // Rotor I: C->E
+  // Reflector: E->A
+  // Reverse Rotor I: A->V
+  // Plugboard: V->V
+  const char *rotors[] = {ROTOR_VIII, ROTOR_VIII, ROTOR_VIII, ROTOR_BETA};
+  size_t rings[] = {0, 0, 0, 0};
+  size_t inits[] = {11, 11, 0, 0};
+  Enigma *enigma = new_Enigma(4, rotors, rings, inits, UKW_B, 0, NULL);
+  char encrypt[64];
+  memset(encrypt, 0, 64);
+  encrypt_Enigma(enigma, encrypt, "ILOVEYOUMYDARLING");
+  ASSERT_STREQ(encrypt, "AWMKQLDZEZXPFCNDN");
+  free_Enigma(enigma);
+}
 
 TEST(ExampleTests, IntegralTest) {
   Enigma *enigma = get_default_Enigma();
